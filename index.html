@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Rumish Khan - UPPCS Aspirant, MBA Graduate, and Future Civil Servant. Explore my journey, education, skills, and more.">
+    <meta name="keywords" content="Rumish Khan, UPPCS, MBA, Civil Services, Uttar Pradesh">
+    <meta name="author" content="Rumish Khan">
     <title>Rumish Khan - UPPCS Aspirant & MBA Graduate</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -24,6 +27,17 @@
             --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
             --gradient-4: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
             --gradient-5: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            
+            /* Dark Mode Variables */
+            --dm-primary-color: #1a2634;
+            --dm-secondary-color: #4fa0ff;
+            --dm-accent-color: #ff5252;
+            --dm-text-light: #f0f4f8;
+            --dm-text-dark: #d0d4d8;
+            --dm-background-light: #121212;
+            --dm-gradient-1: linear-gradient(135deg, #4c6ef5 0%, #5c4ac7 100%);
+            --dm-gradient-2: linear-gradient(135deg, #e64980 0%, #ff677d 100%);
+            --dm-gradient-3: linear-gradient(135deg, #22d3ee 0%, #67e8f9 100%);
         }
 
         body {
@@ -31,6 +45,19 @@
             line-height: 1.6;
             color: var(--text-dark);
             overflow-x: hidden;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body.dark-mode {
+            --primary-color: var(--dm-primary-color);
+            --secondary-color: var(--dm-secondary-color);
+            --accent-color: var(--dm-accent-color);
+            --text-light: var(--dm-text-light);
+            --text-dark: var(--dm-text-dark);
+            --background-light: var(--dm-background-light);
+            --gradient-1: var(--dm-gradient-1);
+            --gradient-2: var(--dm-gradient-2);
+            --gradient-3: var(--dm-gradient-3);
         }
 
         html {
@@ -193,6 +220,20 @@
         .nav-links a:hover {
             transform: translateY(-2px);
             color: white;
+        }
+
+        /* Dark Mode Toggle */
+        .dark-mode-toggle {
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .dark-mode-toggle:hover {
+            transform: rotate(180deg);
         }
 
         /* Floating Action Button */
@@ -585,86 +626,67 @@
             width: 100%;
         }
 
-        /* Advanced Education Cards */
-        .education-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .education-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        /* Advanced Education Timeline */
+        .education-timeline {
             position: relative;
-            overflow: hidden;
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            opacity: 0;
-            transform: translateY(50px) scale(0.9);
+            max-width: 900px;
+            margin: 3rem auto;
         }
 
-        .education-card.visible {
+        .timeline-item {
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .timeline-item.visible {
             opacity: 1;
-            transform: translateY(0) scale(1);
+            transform: translateY(0);
         }
 
-        .education-card::before {
+        .timeline-item::before {
             content: '';
             position: absolute;
+            left: 0.5rem;
             top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
+            width: 20px;
+            height: 20px;
+            background: var(--secondary-color);
+            border-radius: 50%;
+            border: 4px solid var(--background-light);
+            z-index: 1;
+        }
+
+        .education-timeline::before {
+            content: '';
+            position: absolute;
+            left: 1rem;
+            top: 0;
+            bottom: 0;
+            width: 4px;
             background: var(--gradient-2);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.8s ease-out 0.2s;
         }
 
-        .education-card.visible::before {
-            transform: scaleX(1);
+        .timeline-content {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s;
         }
 
-        .education-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-4);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            z-index: -1;
+        .timeline-content:hover {
+            transform: translateX(10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
         }
 
-        .education-card:hover {
-            transform: translateY(-10px) scale(1.02) rotateX(5deg);
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
-        }
-
-        .education-card:hover::after {
-            opacity: 0.1;
-        }
-
-        .education-icon {
-            font-size: 3rem;
-            color: var(--secondary-color);
-            margin-bottom: 1.5rem;
-            transform: scale(0);
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .education-card.visible .education-icon {
-            transform: scale(1);
-            transition-delay: 0.3s;
-        }
-
-        .education-card:hover .education-icon {
-            transform: scale(1.2) rotate(10deg);
+        .timeline-year {
+            font-size: 1.2rem;
             color: var(--accent-color);
+            margin-bottom: 0.5rem;
         }
 
         /* 3D UPPCS Section */
@@ -775,7 +797,7 @@
             transform: translateY(0);
         }
 
-        /* Interactive Skills Section */
+        /* Interactive Skills Section with Progress Bars */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -788,7 +810,7 @@
             padding: 2rem;
             border-radius: 20px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-            text-align: center;
+            text-align: left;
             position: relative;
             overflow: hidden;
             transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
@@ -830,6 +852,25 @@
         .skill-card:hover .skill-icon {
             transform: scale(1.3) rotate(360deg);
             color: var(--accent-color);
+        }
+
+        .progress-bar-container {
+            background: #e0e0e0;
+            border-radius: 20px;
+            height: 8px;
+            margin-top: 1rem;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--gradient-2);
+            width: 0;
+            transition: width 1.5s ease-in-out;
+        }
+
+        .skill-card.visible .progress-bar {
+            width: var(--progress-width);
         }
 
         /* Family Section with Heartbeat Animation */
@@ -880,7 +921,63 @@
             color: var(--accent-color);
         }
 
-        /* Contact Section with Magnetic Effect */
+        /* Blog Section */
+        .blog {
+            background: var(--background-light);
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .blog-image {
+            height: 200px;
+            background: var(--gradient-3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+        }
+
+        .blog-title {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .blog-excerpt {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .blog-date {
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+        }
+
+        /* Contact Section with Form */
         .contact {
             background: var(--gradient-1);
             color: var(--text-light);
@@ -891,54 +988,94 @@
             color: var(--text-light);
         }
 
-        .contact-grid {
+        .contact-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
             gap: 2rem;
-            margin-top: 3rem;
         }
 
-        .contact-card {
-            text-align: center;
-            padding: 2.5rem;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-        }
-
-        .contact-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-            transition: left 0.6s;
-        }
-
-        .contact-card:hover::before {
-            left: 100%;
-        }
-
-        .contact-card:hover {
-            transform: translateY(-10px) scale(1.05);
-            background: rgba(255, 255, 255, 0.2);
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
 
         .contact-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            transition: all 0.4s ease;
+            font-size: 1.8rem;
+            color: var(--secondary-color);
         }
 
-        .contact-card:hover .contact-icon {
-            transform: scale(1.2) rotate(10deg);
+        .contact-form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .form-input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .form-textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .form-button {
+            background: var(--gradient-2);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .form-button:hover {
+            transform: scale(1.05);
+        }
+
+        /* Social Media Links */
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-icon {
+            font-size: 1.5rem;
+            color: var(--text-light);
+            transition: transform 0.3s;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.2);
         }
 
         /* Footer with Wave Animation */
@@ -1105,6 +1242,26 @@
                 height: 50px;
                 font-size: 1.2rem;
             }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .education-timeline {
+                padding-left: 1rem;
+            }
+
+            .timeline-item {
+                padding-left: 2rem;
+            }
+
+            .education-timeline::before {
+                left: 0.5rem;
+            }
+
+            .timeline-item::before {
+                left: 0rem;
+            }
         }
 
         /* Advanced Hover Effects */
@@ -1148,6 +1305,12 @@
         ::-webkit-scrollbar-thumb:hover {
             background: var(--secondary-color);
         }
+
+        /* Accessibility Improvements */
+        a:focus, button:focus {
+            outline: 2px solid var(--secondary-color);
+            outline-offset: 2px;
+        }
     </style>
 </head>
 <body>
@@ -1178,9 +1341,13 @@
                 <li><a href="#education">Education</a></li>
                 <li><a href="#uppcs">UPPCS Journey</a></li>
                 <li><a href="#skills">Skills</a></li>
+                <li><a href="#blog">Blog</a></li>
                 <li><a href="#family">Family</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle Dark Mode">
+                <i class="fas fa-moon"></i>
+            </button>
             <div class="mobile-menu" id="mobileMenu">
                 <i class="fas fa-bars"></i>
             </div>
@@ -1189,7 +1356,7 @@
 
     <!-- Floating Action Button -->
     <div class="floating-menu">
-        <button class="fab-main" id="fabMain">
+        <button class="fab-main" id="fabMain" aria-label="Back to Top">
             <i class="fas fa-rocket"></i>
         </button>
     </div>
@@ -1228,34 +1395,31 @@
         </div>
     </section>
 
-    <!-- Education Section -->
+    <!-- Education Section with Timeline -->
     <section class="education section" id="education">
         <div class="container">
             <h2 class="section-title">Educational Journey</h2>
-            <div class="education-grid">
-                <div class="education-card tilt-card">
-                    <div class="education-icon">
-                        <i class="fas fa-graduation-cap"></i>
+            <div class="education-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2010 - 2012</div>
+                        <h3>Senior Secondary Education</h3>
+                        <p>CBSE Board - Focus on Science and Mathematics streams, establishing a solid academic foundation for higher studies.</p>
                     </div>
-                    <div class="education-title">Master of Business Administration</div>
-                    <div class="education-institution">CCS University, Meerut</div>
-                    <p>Specialized in Business Administration and Management with a focus on strategic planning and organizational development.</p>
                 </div>
-                <div class="education-card tilt-card">
-                    <div class="education-icon">
-                        <i class="fas fa-laptop-code"></i>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2012 - 2015</div>
+                        <h3>Bachelor of Computer Applications</h3>
+                        <p>Completed with distinction in programming and software development, building a strong technical foundation.</p>
                     </div>
-                    <div class="education-title">Bachelor of Computer Applications</div>
-                    <div class="education-institution">University Graduate</div>
-                    <p>Completed with distinction in programming and software development, building a strong technical foundation.</p>
                 </div>
-                <div class="education-card tilt-card">
-                    <div class="education-icon">
-                        <i class="fas fa-school"></i>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2015 - 2017</div>
+                        <h3>Master of Business Administration</h3>
+                        <p>CCS University, Meerut - Specialized in Business Administration and Management with a focus on strategic planning and organizational development.</p>
                     </div>
-                    <div class="education-title">Senior Secondary Education</div>
-                    <div class="education-institution">CBSE Board</div>
-                    <p>Focus on Science and Mathematics streams, establishing a solid academic foundation for higher studies.</p>
                 </div>
             </div>
         </div>
@@ -1289,7 +1453,7 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
+    <!-- Skills Section with Progress Bars -->
     <section class="skills section" id="skills">
         <div class="container">
             <h2 class="section-title">Core Competencies</h2>
@@ -1300,6 +1464,9 @@
                     </div>
                     <h3>Self-Study Excellence</h3>
                     <p>Systematic approach to learning with comprehensive study plans</p>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" style="--progress-width: 95%;"></div>
+                    </div>
                 </div>
                 <div class="skill-card magnetic tilt-card">
                     <div class="skill-icon">
@@ -1307,6 +1474,9 @@
                     </div>
                     <h3>Expert Guidance</h3>
                     <p>Learning from experienced mentors and coaching institutes</p>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" style="--progress-width: 85%;"></div>
+                    </div>
                 </div>
                 <div class="skill-card magnetic tilt-card">
                     <div class="skill-icon">
@@ -1314,6 +1484,9 @@
                     </div>
                     <h3>Current Affairs Analysis</h3>
                     <p>Daily tracking and analysis of current events and government policies</p>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" style="--progress-width: 90%;"></div>
+                    </div>
                 </div>
                 <div class="skill-card magnetic tilt-card">
                     <div class="skill-icon">
@@ -1321,6 +1494,49 @@
                     </div>
                     <h3>Administrative Acumen</h3>
                     <p>Strong understanding of governance and public administration</p>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" style="--progress-width: 88%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog section" id="blog">
+        <div class="container">
+            <h2 class="section-title">My Blog</h2>
+            <p style="text-align: center; margin-bottom: 3rem; font-size: 1.1rem;">Insights from my UPPCS preparation journey and thoughts on public service</p>
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="blog-content">
+                        <h3 class="blog-title">Effective Strategies for UPPCS Prelims</h3>
+                        <p class="blog-excerpt">Sharing my top tips for cracking the preliminary examination with consistent practice and smart study techniques.</p>
+                        <p class="blog-date">September 10, 2025</p>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="blog-content">
+                        <h3 class="blog-title">The Role of Current Affairs in Civil Services</h3>
+                        <p class="blog-excerpt">How staying updated with national and international events can make or break your preparation.</p>
+                        <p class="blog-date">August 25, 2025</p>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="blog-content">
+                        <h3 class="blog-title">Balancing MBA Skills with PCS Preparation</h3>
+                        <p class="blog-excerpt">Leveraging business administration knowledge in administrative services preparation.</p>
+                        <p class="blog-date">July 15, 2025</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1357,40 +1573,51 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact Section with Form -->
     <section class="contact section" id="contact">
         <div class="container">
             <h2 class="section-title">Get In Touch</h2>
             <p style="text-align: center; margin-bottom: 3rem; font-size: 1.2rem;">Feel free to reach out for any opportunities or connections</p>
-            <div class="contact-grid">
-                <div class="contact-card magnetic">
-                    <div class="contact-icon">
-                        <i class="fas fa-map-marker-alt"></i>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt contact-icon"></i>
+                        <p>Village Nanpur, Dist Hapur<br>Post Garhmukteshwar<br>Uttar Pradesh, India</p>
                     </div>
-                    <h3>Location</h3>
-                    <p>Village Nanpur, Dist Hapur<br>Post Garhmukteshwar<br>Uttar Pradesh, India</p>
-                </div>
-                <div class="contact-card magnetic">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope contact-icon"></i>
+                        <p>contact@rumishkhan.example</p>
                     </div>
-                    <h3>Email</h3>
-                    <p>contact@rumishkhan.example</p>
-                </div>
-                <div class="contact-card magnetic">
-                    <div class="contact-icon">
-                        <i class="fas fa-phone"></i>
+                    <div class="contact-item">
+                        <i class="fas fa-phone contact-icon"></i>
+                        <p>+91 XXXXX XXXXX</p>
                     </div>
-                    <h3>Phone</h3>
-                    <p>+91 XXXXX XXXXX</p>
-                </div>
-                <div class="contact-card magnetic">
-                    <div class="contact-icon">
-                        <i class="fas fa-university"></i>
+                    <div class="contact-item">
+                        <i class="fas fa-university contact-icon"></i>
+                        <p>CCS University, Meerut</p>
                     </div>
-                    <h3>Education</h3>
-                    <p>CCS University, Meerut</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    </div>
                 </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" class="form-input" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-input" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-input" placeholder="Subject" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-input form-textarea" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="form-button">Send Message</button>
+                </form>
             </div>
         </div>
     </section>
@@ -1426,7 +1653,7 @@
             });
 
             // Cursor hover effects
-            const hoverElements = document.querySelectorAll('a, button, .skill-card, .education-card, .family-member, .contact-card');
+            const hoverElements = document.querySelectorAll('a, button, .skill-card, .education-card, .family-member, .contact-card, .blog-card, .timeline-content');
             hoverElements.forEach(el => {
                 el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
                 el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
@@ -1504,6 +1731,28 @@
             });
         });
 
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+        const toggleIcon = darkModeToggle.querySelector('i');
+
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                toggleIcon.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                toggleIcon.classList.replace('fa-sun', 'fa-moon');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        // Load saved theme
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-mode');
+            toggleIcon.classList.replace('fa-moon', 'fa-sun');
+        }
+
         // Advanced Scroll Animations
         const observerOptions = {
             threshold: 0.1,
@@ -1528,14 +1777,22 @@
                             highlights.forEach(h => h.classList.add('visible'));
                         }, 800);
                     }
+
+                    // For timeline items
+                    if (entry.target.classList.contains('timeline-item')) {
+                        const items = document.querySelectorAll('.timeline-item');
+                        items.forEach((item, index) => {
+                            setTimeout(() => item.classList.add('visible'), index * 300);
+                        });
+                    }
                 }
             });
         }, observerOptions);
 
         // Observe elements for animations
         const animateElements = document.querySelectorAll(
-            '.section-title, .about-text, .education-card, .skill-card, ' +
-            '.family-member, .contact-card, .stat-card'
+            '.section-title, .about-text, .education-card, .skill-card, .timeline-item, ' +
+            '.family-member, .contact-card, .stat-card, .blog-card'
         );
         
         animateElements.forEach(el => observer.observe(el));
@@ -1635,6 +1892,15 @@
             });
         });
 
+        // Contact Form Submission (Simulated)
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Simulate submission
+            alert('Message sent successfully! (This is a simulation)');
+            contactForm.reset();
+        });
+
         // Advanced Animation Triggers
         const advancedAnimations = () => {
             const heroTitle = document.querySelector('.hero h1');
@@ -1647,10 +1913,9 @@
             
             // Staggered card animations
             const cardGroups = [
-                document.querySelectorAll('.education-card'),
                 document.querySelectorAll('.skill-card'),
                 document.querySelectorAll('.family-member'),
-                document.querySelectorAll('.contact-card')
+                document.querySelectorAll('.blog-card')
             ];
             
             cardGroups.forEach(cards => {
