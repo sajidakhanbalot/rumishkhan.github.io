@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rumish Khan | Civil Service Aspirant</title>
+    <title>Rumish Khan | UPPCS Aspirant</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <style>
         :root {
             --primary: #2563eb;
@@ -484,19 +483,19 @@
             left: -12px;
         }
         
-        /* Civil Service Section */
-        .civil-service {
+        /* UPPCS Section */
+        .uppcs {
             background: linear-gradient(135deg, var(--dark), var(--dark-light));
             color: white;
             clip-path: polygon(0 0, 100% 10%, 100% 100%, 0 90%);
             padding: 150px 0;
         }
         
-        .civil-service .section-title h2 {
+        .uppcs .section-title h2 {
             color: white;
         }
         
-        .civil-service .section-title p {
+        .uppcs .section-title p {
             color: rgba(255, 255, 255, 0.8);
         }
         
@@ -532,6 +531,72 @@
         .service-card h3 {
             margin-bottom: 15px;
             font-size: 1.5rem;
+        }
+        
+        /* Study Progress Section */
+        .progress-section {
+            background: #f8fafc;
+            padding: 100px 0;
+        }
+        
+        .progress-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+        
+        .progress-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            width: 350px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+        }
+        
+        .progress-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+        }
+        
+        .progress-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .progress-title i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-right: 15px;
+        }
+        
+        .progress-title h3 {
+            font-size: 1.4rem;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background: #e2e8f0;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 5px;
+            width: 0;
+            transition: width 1.5s ease-in-out;
+        }
+        
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            color: var(--gray);
+            font-weight: 500;
         }
         
         /* Family Section */
@@ -678,6 +743,37 @@
             transform: translateY(-5px);
         }
         
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background: var(--primary-dark);
+            transform: translateY(-5px);
+        }
+        
         /* Responsive Design */
         @media screen and (max-width: 992px) {
             .header-content h1 {
@@ -752,7 +848,8 @@
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#qualifications">Education</a></li>
-                <li><a href="#civil-service">Career</a></li>
+                <li><a href="#uppcs">UPPCS</a></li>
+                <li><a href="#progress">Progress</a></li>
                 <li><a href="#family">Family</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -772,9 +869,9 @@
             </div>
             <div class="header-content">
                 <h1>Rumish Khan</h1>
-                <p>Civil Service Aspirant | MBA Graduate</p>
+                <p>UPPCS Aspirant | MBA Graduate</p>
                 <a href="#contact" class="btn">Get In Touch</a>
-                <a href="#civil-service" class="btn btn-outline">My Career Path</a>
+                <a href="#uppcs" class="btn btn-outline">My UPPCS Journey</a>
             </div>
         </div>
     </header>
@@ -789,9 +886,9 @@
             <div class="about-content">
                 <div class="about-text">
                     <h3>Hello! I'm Rumish Khan</h3>
-                    <p>I am a 29-year-old professional with a strong educational background in computer applications and business administration. I have completed my MBA from CCS University, Meerut and am currently preparing for the Civil Services Examination.</p>
-                    <p>My educational journey began with 10+2 from CBSE Board, which laid a strong foundation for my higher studies. I am dedicated to continuous learning and serving the nation through civil services.</p>
-                    <p>I come from a close-knit family in Nanpur, Hapur, where I've learned the values of hard work, dedication, and perseverance that I apply to all aspects of my life and my civil service preparation.</p>
+                    <p>I am a 29-year-old professional with a strong educational background in computer applications and business administration. I have completed my MBA from CCS University, Meerut and am currently preparing for the UPPCS Examination.</p>
+                    <p>My educational journey began with 10+2 from CBSE Board, which laid a strong foundation for my higher studies. I am dedicated to continuous learning and serving my state through provincial civil services.</p>
+                    <p>I come from a close-knit family in Nanpur, Hapur, where I've learned the values of hard work, dedication, and perseverance that I apply to all aspects of my life and my UPPCS preparation.</p>
                 </div>
                 <div class="info-list">
                     <div class="info-item">
@@ -867,12 +964,12 @@
         </div>
     </section>
 
-    <!-- Civil Service Section -->
-    <section id="civil-service" class="civil-service">
+    <!-- UPPCS Section -->
+    <section id="uppcs" class="uppcs">
         <div class="container">
             <div class="section-title">
-                <h2>Civil Service Preparation</h2>
-                <p>My journey towards serving the nation through civil services</p>
+                <h2>UPPCS Preparation</h2>
+                <p>My journey towards serving Uttar Pradesh through provincial civil services</p>
             </div>
             <div class="service-content">
                 <div class="service-card">
@@ -880,14 +977,14 @@
                         <i class="fas fa-book-open"></i>
                     </div>
                     <h3>Current Focus</h3>
-                    <p>Preparing for UPSC Civil Services Examination with dedication and systematic approach</p>
+                    <p>Preparing for UPPCS Examination with dedication and systematic approach</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-target"></i>
                     </div>
                     <h3>Career Goal</h3>
-                    <p>Aspiring to become an IAS officer to contribute to nation building and public service</p>
+                    <p>Aspiring to become a PCS officer to contribute to state administration and public service</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
@@ -895,6 +992,96 @@
                     </div>
                     <h3>Preparation Strategy</h3>
                     <p>Combining self-study, expert guidance, and current affairs analysis for comprehensive preparation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Study Progress Section -->
+    <section id="progress" class="progress-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Study Progress</h2>
+                <p>Tracking my UPPCS preparation journey</p>
+            </div>
+            <div class="progress-container">
+                <div class="progress-card">
+                    <div class="progress-title">
+                        <i class="fas fa-history"></i>
+                        <h3>History</h3>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="85"></div>
+                    </div>
+                    <div class="progress-info">
+                        <span>Completed</span>
+                        <span>85%</span>
+                    </div>
+                </div>
+                <div class="progress-card">
+                    <div class="progress-title">
+                        <i class="fas fa-globe-asia"></i>
+                        <h3>Geography</h3>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="75"></div>
+                    </div>
+                    <div class="progress-info">
+                        <span>Completed</span>
+                        <span>75%</span>
+                    </div>
+                </div>
+                <div class="progress-card">
+                    <div class="progress-title">
+                        <i class="fas fa-balance-scale"></i>
+                        <h3>Polity</h3>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="90"></div>
+                    </div>
+                    <div class="progress-info">
+                        <span>Completed</span>
+                        <span>90%</span>
+                    </div>
+                </div>
+                <div class="progress-card">
+                    <div class="progress-title">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Economics</h3>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="70"></div>
+                    </div>
+                    <div class="progress-info">
+                        <span>Completed</span>
+                        <span>70%</span>
+                    </div>
+                </div>
+                <div class="progress-card">
+                    <div class="progress-title">
+                        <i class="fas fa-newspaper"></i>
+                        <h3>Current Affairs</h3>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="80"></div>
+                    </div>
+                    <div class="progress-info">
+                        <span>Ongoing</span>
+                        <span>80%</span>
+                    </div>
+                </div>
+                <div class="progress-card">
+                    <div class="progress-title">
+                        <i class="fas fa-brain"></i>
+                        <h3>CSAT</h3>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="65"></div>
+                    </div>
+                    <div class="progress-info">
+                        <span>Completed</span>
+                        <span>65%</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1001,11 +1188,15 @@
         </div>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
     <script>
-        // Initialize animations
+        // Initialize animations and interactive elements
         document.addEventListener('DOMContentLoaded', function() {
-            // Simple JavaScript for navigation effect
+            // Navigation effect
             window.addEventListener('scroll', function() {
                 const nav = document.querySelector('nav');
                 if (window.scrollY > 50) {
@@ -1017,10 +1208,27 @@
                     nav.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.05)';
                     nav.style.padding = '15px 0';
                 }
+                
+                // Back to top button
+                const backToTop = document.querySelector('.back-to-top');
+                if (window.scrollY > 500) {
+                    backToTop.classList.add('active');
+                } else {
+                    backToTop.classList.remove('active');
+                }
+            });
+
+            // Progress bar animation
+            const progressBars = document.querySelectorAll('.progress-fill');
+            progressBars.forEach(bar => {
+                const width = bar.getAttribute('data-width');
+                setTimeout(() => {
+                    bar.style.width = width + '%';
+                }, 500);
             });
 
             // Add scroll animations to elements
-            const animatedElements = document.querySelectorAll('.section-title, .about-text, .info-list, .timeline-content, .service-card, .member-card');
+            const animatedElements = document.querySelectorAll('.section-title, .about-text, .info-list, .timeline-content, .service-card, .member-card, .progress-card');
             
             function checkScroll() {
                 animatedElements.forEach(element => {
@@ -1043,6 +1251,15 @@
             
             window.addEventListener('scroll', checkScroll);
             window.addEventListener('load', checkScroll);
+            
+            // Back to top functionality
+            document.querySelector('.back-to-top').addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
         });
     </script>
 </body>
